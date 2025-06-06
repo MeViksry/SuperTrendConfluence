@@ -96,7 +96,7 @@ TF1: 1m, TF2: 3m, TF3: 5m, TF4: 15m, TF5: 30m
 ![Main Interface](Sample/interface.jpg)
 
 ### 📋 Multi-Asset Table
-![Asset Table](https://via.placeholder.com/400x200/1a1a1a/ffffff?text=Multi-Asset+Trend+Table)
+![Asset Table](Sample/table.jpg)
 
 ## 🎯 How to Use
 
