@@ -93,7 +93,7 @@ TF1: 1m, TF2: 3m, TF3: 5m, TF4: 15m, TF5: 30m
 ## 📸 Interface Overview
 
 ### 🖥️ Main Chart Display
-![Main Interface](https://via.placeholder.com/600x300/0f1419/00d4aa?text=SuperTrend+Lines+%2B+Volume+Bars)
+![Main Interface](Sample/setting.jpg)
 
 ### 📋 Multi-Asset Table
 ![Asset Table](https://via.placeholder.com/400x200/1a1a1a/ffffff?text=Multi-Asset+Trend+Table)
