@@ -79,9 +79,9 @@
 
 #### **MULTI TABLE ASSET**
 ```javascript
-// ==========================
-// 🔍 ULTRA WIDE MULTI-ASSET MONITORING SETUP
-// ==========================
+// ===================================
+// TABLE MULTI ASSET MONITORING SETUP
+// ===================================
 
 // === BINANCE MONITORING CRYPTO ===
 BINANCE:BTCUSDT
