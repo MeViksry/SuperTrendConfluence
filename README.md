@@ -226,9 +226,9 @@ A: Adjust "Retracement Sensitivity" parameter
 - [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@quentrade)
 
 ### 📧 Contact
-- **Email**: support@quentrade.com
-- **Website**: [quentrade.com](https://quentrade.com)
-- **Documentation**: [docs.quentrade.com](https://docs.quentrade.com)
+- **Email**: support@quentraalgo.com
+- **Website**: [quentraalgo.com](https://quentraalgo.com)
+- **Documentation**: [docs.quentrade.com](https://docs.quentraalgo.com)
 
 ## 📄 License
 
