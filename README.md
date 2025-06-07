@@ -251,7 +251,7 @@ SAXO:NZDCAD
 // ==========================
 ```
 
-### 🖥️ MAIN CHART DISPLAY
+### 🖥️ Overview
 ![Main Interface](Sample/1_20250607_141429_0000.png)
 
 ### 📋 MULTI ASSET TABLE
