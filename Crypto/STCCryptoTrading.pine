@@ -1,0 +1,234 @@
+// This Pine Script® code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// AUTHOR  : © MeViksry
+// COMPANY : QUENTRA ALGO
+// LICENSE : MIT LICENSE https://opensource.org/license/mit
+
+//@version=6
+indicator("STC Crypto Trading [QUENTRA ALGO]", "QUENTRA ALGO - STC Crypto Trading", overlay=true, max_bars_back=500, max_lines_count=500)
+
+atrLength   = input.int(10,   "ATR Length",     minval=1, maxval=100,        group="Supertrend", tooltip="ATR calculation period. Decrease for more sensitive signals, increase for smoother trends.")
+factor      = input.float(3.0, "Multiplier",     minval=0.1, maxval=10.0, step=0.1, group="Supertrend", tooltip="Band distance from price. Decrease for more frequent signals, increase for stronger trends.")
+maxScale    = input.float(4.0, "Volume Scale",   minval=0.1, maxval=10.0, group="Volume", tooltip="Volume bar height. Increase for taller bars, decrease for compact display.")
+volThreshold = input.float(3.0, "Volume TP",  minval=0.7, maxval=10.0, step=0.5, group="Volume", tooltip="Volume alert level. Decrease for more markers, increase for only extreme volume.")
+arrowThreshold = input.float(0.5, "Retracement Sensitivity", minval=0.1, maxval=3.0, step=0.1, group="Signals", tooltip="Retracement sensitivity. increase for more arrows, Decrease for fewer arrows.")
+expiry_age = input.int(1000, "Max Level Age", minval=1, group="Level Management", tooltip="Number of bars after which a level will be automatically removed")
+mitigate = input.string("body", "Sweep Type", options=["wick", "body"], group="Level Management", tooltip="Body: level removed when price body (close) crosses it; Wick: level removed when price wick crosses it")
+allow_rejection = input.bool(false, "Allow Rejection", group="Level Management", tooltip="When enabled with body sweep type, requires two consecutive closes beyond level to remove it")
+asset1 = input.symbol("BINANCE:BTCUSDT", "Asset 1", group="Multi-Asset Table", inline="assets1")
+asset2 = input.symbol("BINANCE:ETHUSDT", "Asset 2", group="Multi-Asset Table", inline="assets1")
+asset3 = input.symbol("BINANCE:BNBUSDT", "Asset 3", group="Multi-Asset Table", inline="assets2")
+asset4 = input.symbol("BINANCE:SOLUSDT", "Asset 4", group="Multi-Asset Table", inline="assets2")
+asset5 = input.symbol("BINANCE:XRPUSDT", "Asset 5", group="Multi-Asset Table", inline="assets3")
+
+tf1 = input.timeframe("1", "Timeframe 1", group="Multi-Asset Table", inline="timeframes1")
+tf2 = input.timeframe("3", "Timeframe 2", group="Multi-Asset Table", inline="timeframes1")
+tf3 = input.timeframe("5", "Timeframe 3", group="Multi-Asset Table", inline="timeframes2")
+tf4 = input.timeframe("15", "Timeframe 4", group="Multi-Asset Table", inline="timeframes2")
+tf5 = input.timeframe("30", "Timeframe 5", group="Multi-Asset Table", inline="timeframes3")
+
+showTable = input.bool(true, "Show Table", group="Multi-Asset Table", tooltip="Display multi-asset trend table.")
+colBull     = input.color(#00008B, "Bull Color", group="Appearance", tooltip="Color for uptrend elements.")
+colBear     = input.color(#FFFFFF, "Bear Color", group="Appearance", tooltip="Color for downtrend elements.")
+
+[supertrend, direction] = ta.supertrend(factor, atrLength)
+supertrend := barstate.isfirst ? na : supertrend
+
+offset      = ta.sma(ta.atr(14), 300) * 1.2
+supertrend_u = supertrend + offset
+supertrend_l = supertrend - offset
+
+dist_to_upper = math.abs(((high + low) / 2) - supertrend_u)
+dist_to_lower = math.abs(((high + low) / 2) - supertrend_l)
+max_dist      = ta.sma(ta.atr(14), 300) * 3
+
+transp_up   = math.min(90, 50 + math.round((dist_to_upper / max_dist) * 40))
+transp_down = math.min(90, 50 + math.round((dist_to_lower / max_dist) * 40))
+
+volLen = 200
+heightMult = 1.5
+minAlpha = 20
+maxAlpha = 80
+
+volumeAvailable = not na(volume)
+hlRange = high - low
+avgHLRange = ta.sma(hlRange, volLen)
+hlVolatility = hlRange / ta.stdev(hlRange, volLen)
+
+n_vol       = volumeAvailable ? math.min(maxScale, volume / ta.stdev(volume, volLen)) : math.min(maxScale, hlVolatility)
+step        = offset * heightMult / maxScale
+trendChange = direction != direction[1]
+trend_col   = direction < 0 ? colBull : colBear
+alphaVol    = math.round(maxAlpha - (n_vol / maxScale) * (maxAlpha - minAlpha))
+histCol     = color.new(trend_col, alphaVol)
+
+var float histTop    = na
+var float histBottom = na
+histTop    := na
+histBottom := na
+if not trendChange
+    if direction < 0
+        histBottom := supertrend_l
+        histTop    := supertrend_l + step * n_vol
+    else
+        histTop    := supertrend_u
+        histBottom := supertrend_u - step * n_vol
+
+dist_to_upper_norm = dist_to_upper / max_dist
+dist_to_lower_norm = dist_to_lower / max_dist
+volatility         = ta.atr(14)
+
+bullishRetracement = direction < 0 and dist_to_lower_norm <= arrowThreshold
+bearishRetracement = direction >= 0 and dist_to_upper_norm <= arrowThreshold
+
+highVolumeThreshold = n_vol >= volThreshold
+
+bodyMiddle  = plot(barstate.isfirst ? na : (open + close) / 2, display=display.none)
+upTrend     = plot(direction < 0 ? supertrend_l : na, "Up Trend",   color=colBull, style=plot.style_linebr, linewidth=2)
+downTrend   = plot(direction >= 0 ? supertrend_u : na, "Down Trend", color=colBear, style=plot.style_linebr, linewidth=2)
+
+fill(bodyMiddle, upTrend,   color=color.new(colBull, transp_down), fillgaps=false)
+fill(bodyMiddle, downTrend, color=color.new(colBear, transp_up),  fillgaps=false)
+
+plotcandle(
+     histTop,
+     histTop,
+     histBottom,
+     histBottom,
+     "",
+     histCol,
+     histCol,
+     bordercolor=histCol
+ )
+
+plotchar(bullishRetracement ? supertrend_l - (volatility * 1.2) : na, "Bullish Retracements", "▲", location.absolute, colBull, size=size.tiny)
+plotchar(bearishRetracement ? supertrend_u + (volatility * 1.2) : na, "Bearish Retracements", "▼", location.absolute, colBear, size=size.tiny)
+plotchar(highVolumeThreshold and direction < 0 ? 1 : na, "High Volume - Uptrend", "◆", location.abovebar, color.new(color.white, 30), size=size.tiny)
+plotchar(highVolumeThreshold and direction >= 0 ? 1 : na, "High Volume - Downtrend", "◆", location.belowbar, color.new(color.blue, 30), size=size.tiny)
+
+getTrend(asset, tf) =>
+    request.security(asset, tf, direction < 0 ? 1 : -1)
+
+if barstate.islast and showTable
+    var multiAssetTable = table.new(position=position.top_right, columns=6, rows=6, bgcolor=chart.bg_color, border_width=1, border_color=chart.fg_color, frame_color=chart.fg_color, frame_width=1)
+
+    table.cell(multiAssetTable, 0, 0, "TF\\Asset", text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+    table.cell(multiAssetTable, 1, 0, array.get(str.split(asset1, ":"), 1), text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+    table.cell(multiAssetTable, 2, 0, array.get(str.split(asset2, ":"), 1), text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+    table.cell(multiAssetTable, 3, 0, array.get(str.split(asset3, ":"), 1), text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+    table.cell(multiAssetTable, 4, 0, array.get(str.split(asset4, ":"), 1), text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+    table.cell(multiAssetTable, 5, 0, array.get(str.split(asset5, ":"), 1), text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+
+    timeframes = array.from(tf1, tf2, tf3, tf4, tf5)
+    assets = array.from(asset1, asset2, asset3, asset4, asset5)
+
+    for i = 0 to 4
+        tf = array.get(timeframes, i)
+        table.cell(multiAssetTable, 0, i + 1, tf, text_color=chart.fg_color, text_halign=text.align_center, text_size=size.tiny)
+
+        for j = 0 to 4
+            asset = array.get(assets, j)
+            trendValue = getTrend(asset, tf)
+            trendText = trendValue == 1 ? "▲" : "▼"
+            cellColor = trendValue == 1 ? color.new(colBull, 70) : color.new(colBear, 70)
+            table.cell(multiAssetTable, j + 1, i + 1, trendText, text_color=chart.fg_color, bgcolor=cellColor, text_halign=text.align_center, text_size=size.tiny)
+
+var lowest = 0.0
+var highest = 0.0
+
+var lowest_ = 0
+var highest_ = 0
+
+var new = 1
+
+var levelHighArray = array.new_line()
+var levelLowArray = array.new_line()
+var levelHighArray1 = array.new_line()
+var levelLowArray1 = array.new_line()
+
+timing = math.max(nz(ta.barssince(direction != direction[1])), 1)
+timing := math.min(timing, 250)
+
+x = ta.lowest(low, timing)
+x_ = ta.highest(high, timing)
+
+y = math.min(ta.lowestbars(low, timing)-1, 250)
+y_ = math.min(ta.highestbars(high, timing)-1, 250)
+
+if direction < 0 and direction[1] >= 0
+    if new == 1
+        new := 0
+        lowest := x[1]
+        lowest_ := bar_index + y[1]
+    else
+        lowest := x[1]
+        lowest_ := bar_index + y[1]
+        line.new(highest_,highest,lowest_,lowest, color = colBear, width = 1)
+
+        levelHighArray.unshift(line.new(highest_, highest, bar_index+1, highest, color = colBear, width = 1))
+        levelHighArray1.unshift(line.new(highest_, highest-volatility/2, bar_index+1, highest-volatility/2, color = color.new(colBear, 80), width = 1))
+        linefill.new(levelHighArray.first(), levelHighArray1.first(), color.new(colBear, 80))
+
+if direction >= 0 and direction[1] < 0
+    if new == 1
+        new := 0
+        highest := x_[1]
+        highest_ := bar_index + y_[1]
+    else
+        highest := x_[1]
+        highest_ := bar_index + y_[1]
+        line.new(lowest_,lowest,highest_,highest, color = colBull, width = 1)
+
+        levelLowArray.unshift(line.new(lowest_, lowest, bar_index+1, lowest, color = colBull, width = 1))
+        levelLowArray1.unshift(line.new(lowest_, lowest+volatility/2, bar_index+1, lowest+volatility/2, color = color.new(colBull, 80), width = 1))
+        linefill.new(levelLowArray.first(), levelLowArray1.first(), color.new(colBull, 80))
+
+if levelHighArray.size() > 0
+    for ln = levelHighArray.size() - 1 to 0
+        if ln < levelHighArray.size()
+            cL = levelHighArray.get(ln)
+            cL_ = levelHighArray1.get(ln)
+            yL = cL.get_y1()
+            x1 = cL.get_x1()
+            age = bar_index - x1
+            is_body = mitigate == "body"
+            cross_body = close > yL
+            cross_body_confirmed = close > yL and close[1] > yL
+            cross_wick = high > yL
+            remove_by_mitigation = is_body ? (allow_rejection ? cross_body_confirmed : cross_body) : cross_wick
+
+            if remove_by_mitigation or age > expiry_age
+                levelHighArray.remove(ln)
+                levelHighArray1.remove(ln)
+            else
+                cL.set_x2(bar_index + 1)
+                cL_.set_x2(bar_index + 1)
+
+if levelLowArray.size() > 0
+    for ln = levelLowArray.size() - 1 to 0
+        if ln < levelLowArray.size()
+            cL = levelLowArray.get(ln)
+            cL_ = levelLowArray1.get(ln)
+            yL = cL.get_y1()
+            x1 = cL.get_x1()
+            age = bar_index - x1
+            is_body = mitigate == "body"
+            cross_body = close < yL
+            cross_body_confirmed = close < yL and close[1] < yL
+            cross_wick = low < yL
+            remove_by_mitigation = is_body ? (allow_rejection ? cross_body_confirmed : cross_body) : cross_wick
+
+            if remove_by_mitigation or age > expiry_age
+                levelLowArray.remove(ln)
+                levelLowArray1.remove(ln)
+            else
+                cL.set_x2(bar_index + 1)
+                cL_.set_x2(bar_index + 1)
+
+// Alerts
+alertcondition(direction[1] > direction, title="Downtrend to Uptrend")
+alertcondition(direction[1] < direction, title="Uptrend to Downtrend")
+alertcondition(direction[1] != direction, title="Universal Trend Change")
+alertcondition(bullishRetracement, title="Bullish Retracement Entries")
+alertcondition(bearishRetracement, title="Bearish Retracement Entries")
+alertcondition(highVolumeThreshold and direction < 0, title="Uptrend Volume TP")
+alertcondition(highVolumeThreshold and direction >= 0, title="Downtrend Volume TP")
