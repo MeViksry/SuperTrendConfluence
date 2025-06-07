@@ -1,7 +1,7 @@
 // This Pine Script® code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
 // AUTHOR  : © MeViksry
 // COMPANY : QUENTRA ALGO
-// LICENSE : MIT LICENSE https://opensource.org/license/mit
+// LICENSE : https://github.com/MeViksry/SuperTrendConfluence/blob/main/LICENSE
 
 //@version=6
 indicator("STC Crypto Trading [QUENTRA ALGO]", "QUENTRA ALGO - STC Crypto Trading", overlay=true, max_bars_back=500, max_lines_count=500)
