@@ -251,8 +251,6 @@ SAXO:NZDCAD
 // ==========================
 ```
 
-## 📸 INTERFACE OVERVIEW
-
 ### 🖥️ MAIN CHART DISPLAY
 ![Main Interface](Sample/Tampilan.jpg)
 
