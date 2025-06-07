@@ -14,12 +14,15 @@ arrowThreshold = input.float(0.5, "Retracement Sensitivity", minval=0.1, maxval=
 expiry_age = input.int(1000, "Max Level Age", minval=1, group="Level Management", tooltip="Number of bars after which a level will be automatically removed")
 mitigate = input.string("body", "Sweep Type", options=["wick", "body"], group="Level Management", tooltip="Body: level removed when price body (close) crosses it; Wick: level removed when price wick crosses it")
 allow_rejection = input.bool(false, "Allow Rejection", group="Level Management", tooltip="When enabled with body sweep type, requires two consecutive closes beyond level to remove it")
-asset1 = input.symbol("BINANCE:BTCUSDT", "Asset 1", group="Multi-Asset Table", inline="assets1")
-asset2 = input.symbol("BINANCE:ETHUSDT", "Asset 2", group="Multi-Asset Table", inline="assets1")
-asset3 = input.symbol("BINANCE:BNBUSDT", "Asset 3", group="Multi-Asset Table", inline="assets2")
-asset4 = input.symbol("BINANCE:SOLUSDT", "Asset 4", group="Multi-Asset Table", inline="assets2")
-asset5 = input.symbol("BINANCE:XRPUSDT", "Asset 5", group="Multi-Asset Table", inline="assets3")
 
+// ----- TABLE MULTI ASSET ----- // 
+asset1 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 1", group="Multi-Asset Table", inline="assets1")
+asset2 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 2", group="Multi-Asset Table", inline="assets1")
+asset3 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 3", group="Multi-Asset Table", inline="assets2")
+asset4 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 4", group="Multi-Asset Table", inline="assets2")
+asset5 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 5", group="Multi-Asset Table", inline="assets3")
+
+// ----- TIMEFRAME ---- //
 tf1 = input.timeframe("1", "Timeframe 1", group="Multi-Asset Table", inline="timeframes1")
 tf2 = input.timeframe("3", "Timeframe 2", group="Multi-Asset Table", inline="timeframes1")
 tf3 = input.timeframe("5", "Timeframe 3", group="Multi-Asset Table", inline="timeframes2")
