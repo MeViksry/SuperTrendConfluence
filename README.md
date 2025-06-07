@@ -255,7 +255,7 @@ SAXO:NZDCAD
 ![Main Interface](Sample/1_20250607_141429_0000.png)
 
 ### 📋 MULTI ASSET TABLE
-![Asset Table](Sample/table.jpg)
+![Asset Table](Sample/1_20250607_142614_0000.png)
 
 ## 🎯 How to Use
 
