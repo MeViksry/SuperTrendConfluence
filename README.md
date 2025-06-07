@@ -274,7 +274,7 @@ SOFTWARE.
 **⭐ Star this repository if you find it helpful!**
 
 [![GitHub stars](https://img.shields.io/github/stars/MeViksry/SuperTrendConfluence?style=social)](https://github.com/MeViksry/SuperTrendConfluence)
-[![GitHub forks](https://img.shields.io/github/forks/quentrade/supertrend-confluence?style=social)](https://github.com/MeViksry/SuperTrendConfluence)
+[![GitHub forks](https://img.shields.io/github/forks/MeViksry/SuperTrendConfluence?style=social)](https://github.com/MeViksry/SuperTrendConfluence)
 
 **Made with ❤️ by [Quentrade](https://quentrade.com)**
 
