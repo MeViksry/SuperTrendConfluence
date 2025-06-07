@@ -71,7 +71,7 @@
 | Volume Scale | 4.0 | 0.1-10.0 | Height scaling for volume bars |
 | Volume TP | 3.0 | 0.7-10.0 | Threshold for volume alerts |
 
-#### **Signal Configuration**
+#### **SIGNAL CONFIGURATION**
 | Parameter | Default | Range | Description |
 |-----------|---------|-------|-------------|
 | Retracement Sensitivity | 0.5 | 0.1-3.0 | Sensitivity for entry signals |
