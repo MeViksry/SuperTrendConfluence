@@ -48,7 +48,7 @@
 
 3. **Copy & Paste Code**
    ```pinescript
-   // Paste the complete SuperTrendConfluence code
+   // Paste the complete STCCryptoTrading/STCForexTrading code
    ```
 
 4. **Add to Chart**
