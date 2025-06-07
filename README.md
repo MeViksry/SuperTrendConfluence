@@ -77,9 +77,16 @@
 | Retracement Sensitivity | 0.5 | 0.1-3.0 | Sensitivity for entry signals |
 | Max Level Age | 1000 | 1+ | Auto-removal age for levels |
 
-#### **Multi-Asset Table**
+#### **MULTI TABLE ASSET**
 ```javascript
-// Default Assets
+// BINANCE MONITORING CRYPTO
+Asset 1: BINANCE:BTCUSDT
+Asset 2: BINANCE:ETHUSDT  
+Asset 3: BINANCE:BNBUSDT
+Asset 4: BINANCE:SOLUSDT
+Asset 5: BINANCE:XRPUSDT
+
+// FOREX
 Asset 1: BINANCE:BTCUSDT
 Asset 2: BINANCE:ETHUSDT  
 Asset 3: BINANCE:BNBUSDT
