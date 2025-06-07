@@ -1,4 +1,4 @@
-# SuperTrendConfluence
+a# SuperTrendConfluence
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TradingView](https://img.shields.io/badge/TradingView-Pine%20Script%20v6-blue)](https://www.tradingview.com)
@@ -274,7 +274,7 @@ SOFTWARE.
 **⭐ Star this repository if you find it helpful!**
 
 [![GitHub stars](https://img.shields.io/github/stars/quentrade/supertrend-confluence?style=social)](https://github.com/quentrade/supertrend-confluence)
-[![GitHub forks](https://img.shields.io/github/forks/quentrade/supertrend-confluence?style=social)](https://github.com/MeViksry/SupertrendConfluence)
+[![GitHub forks](https://img.shields.io/github/forks/quentrade/supertrend-confluence?style=social)](https://github.com/MeViksry/SuperTrendConfluence)
 
 **Made with ❤️ by [Quentrade](https://quentrade.com)**
 
