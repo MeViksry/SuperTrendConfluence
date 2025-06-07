@@ -15,7 +15,7 @@ expiry_age = input.int(1000, "Max Level Age", minval=1, group="Level Management"
 mitigate = input.string("body", "Sweep Type", options=["wick", "body"], group="Level Management", tooltip="Body: level removed when price body (close) crosses it; Wick: level removed when price wick crosses it")
 allow_rejection = input.bool(false, "Allow Rejection", group="Level Management", tooltip="When enabled with body sweep type, requires two consecutive closes beyond level to remove it")
 
-// ----- TABLE MULTI ASSET ----- // 
+// ----- TABLE MULTI ASSET MONITORING SETUP ----- // 
 asset1 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 1", group="Multi-Asset Table", inline="assets1")
 asset2 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 2", group="Multi-Asset Table", inline="assets1")
 asset3 = input.symbol("NAME-EXCHANGE:TICKER", "Asset 3", group="Multi-Asset Table", inline="assets2")
