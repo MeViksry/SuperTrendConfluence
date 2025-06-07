@@ -254,7 +254,7 @@ SAXO:NZDCAD
 ## 📸 Interface Overview
 
 ### 🖥️ Main Chart Display
-![Main Interface](Sample/interface.jpg)
+![Main Interface](Sample/Tampilan.jpg)
 
 ### 📋 Multi-Asset Table
 ![Asset Table](Sample/table.jpg)
