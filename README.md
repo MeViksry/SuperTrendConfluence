@@ -1,4 +1,4 @@
-# 📈 STC CRYPTO & FOREX TRADINGS 25X LEVRAGE
+# SuperTrendConfluence Algorithm Crypto & Forex Trading Free Open Source
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-aqua.svg)](https://opensource.org/licenses/MIT)
 [![TradingView](https://img.shields.io/badge/TradingView-Pine%20Script%20v6-aqua)](https://www.tradingview.com)
