@@ -59,13 +59,13 @@
 
 ### 🎛️ PARAMETER SETTING
 
-#### **SuperTrend Settings**
+#### **SUPERTREND SETTING**
 | Parameter | Default | Range | Description |
 |-----------|---------|-------|-------------|
 | ATR Length | 10 | 1-100 | Period for ATR calculation |
 | Multiplier | 3.0 | 0.1-10.0 | Distance multiplier for trend bands |
 
-#### **Volume Analysis**
+#### **VOLUME ANALYSIS**
 | Parameter | Default | Range | Description |
 |-----------|---------|-------|-------------|
 | Volume Scale | 4.0 | 0.1-10.0 | Height scaling for volume bars |
@@ -318,12 +318,12 @@ Use this for:
 ## 📈 BACKTEST RESULTS
 
 ### 🏆 PERFORMANCE METRICS
-![Backtest Results](https://via.placeholder.com/800x400/1a1a1a/00ff00?text=Backtest+Results+%7C+Win+Rate%3A+67%25+%7C+Profit+Factor%3A+1.85)
+![Backtest Results](Sample/4.jpg)
 
-#### **Sample Results (BTCUSDT 1H)**
-- **Win Rate**: 67%
+#### **Sample Results (BTCUSDT 1m)**
+- **Win Rate**: 80%
 - **Profit Factor**: 1.85
-- **Max Drawdown**: 12.5%
+- **Max Drawdown**: 5.5%
 - **Sharpe Ratio**: 1.42
 
 *Note: Past performance does not guarantee future results*
