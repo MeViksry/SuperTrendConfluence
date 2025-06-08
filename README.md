@@ -8,7 +8,7 @@
 
 ![SuperTrendConfluence Interface](Sample/1.jpg)
 
-## 🚀 Features
+## 🚀 FEATURES
 
 ### 🎯 Core Algorithm
 - **Advanced SuperTrend**: Enhanced SuperTrend calculation with customizable ATR periods and multipliers
