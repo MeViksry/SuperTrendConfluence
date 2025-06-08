@@ -28,7 +28,7 @@
 - Retracement entry signals
 - Universal trend change detection
 
-## 🛠️ Installation & Setup
+## 🛠️ INSTALLATION & SETUP
 
 ### 📋 Prerequisites
 - TradingView account (Basic, Pro, or Premium)
