@@ -6,7 +6,7 @@
 
 > **Advanced Multi-Asset SuperTrend Algorithm with Volume Analysis & Dynamic Support/Resistance Levels**
 
-![SuperTrendConfluence Interface](Sample/Banner.png)
+![SuperTrendConfluence Interface](Sample/1.jpg)
 
 ## 🚀 Features
 
