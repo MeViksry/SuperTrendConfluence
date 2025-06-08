@@ -35,7 +35,7 @@
 - Pine Script v6 compatibility
 - Real-time data access for multi-asset analysis
 
-### 🔧 Installation Steps
+### 🔧 INSTALLATION STEPS
 
 1. **Open TradingView**
    ```
@@ -55,9 +55,9 @@
    - Click "Add to Chart"
    - Configure parameters as needed
 
-## ⚙️ Configuration Guide
+## ⚙️ CONFIGURATION GUIDE
 
-### 🎛️ Parameter Settings
+### 🎛️ PARAMETER SETTING
 
 #### **SuperTrend Settings**
 | Parameter | Default | Range | Description |
@@ -251,15 +251,15 @@ SAXO:NZDCAD
 // ==========================
 ```
 
-### 🖥️ Overview
+### 🖥️ OVERVIEW
 ![Main Interface](Sample/2.jpg)
 
 ### 📋 MULTI ASSET TABLE
 ![Asset Table](Sample/3.jpg)
 
-## 🎯 How to Use
+## 🎯 HOW TO USE
 
-### 📈 Trading Signals
+### 📈 TRADING SIGNALS
 
 #### **Trend Identification**
 - 🟢 **Bullish Trend**: Price above blue SuperTrend line
@@ -276,7 +276,7 @@ SAXO:NZDCAD
 - Color-coded: Blue for resistance, Green for support
 - Auto-removal when price sweeps through levels
 
-### 📊 Multi-Asset Analysis
+### 📊 MULTI ASSET ANALISIS
 
 The table shows trend direction for each asset across different timeframes:
 - ▲ = Bullish trend
@@ -287,9 +287,9 @@ Use this for:
 - **Sector strength comparison**
 - **Multi-timeframe confirmation**
 
-## 🔔 Alert Setup
+## 🔔 ALERT SETUP
 
-### 📱 Available Alerts
+### 📱 AVAILABLE ALERT
 
 1. **Trend Changes**
    - Downtrend to Uptrend
@@ -304,7 +304,7 @@ Use this for:
    - Uptrend Volume TP
    - Downtrend Volume TP
 
-### ⚡ Setting Up Alerts
+### ⚡ SETTING UP ALERT
 
 ```javascript
 // In TradingView:
@@ -315,9 +315,9 @@ Use this for:
 5. Configure notification method
 ```
 
-## 📈 Backtest Results
+## 📈 BACKTEST RESULTS
 
-### 🏆 Performance Metrics
+### 🏆 PERFORMANCE METRICS
 ![Backtest Results](https://via.placeholder.com/800x400/1a1a1a/00ff00?text=Backtest+Results+%7C+Win+Rate%3A+67%25+%7C+Profit+Factor%3A+1.85)
 
 #### **Sample Results (BTCUSDT 1H)**
@@ -328,23 +328,23 @@ Use this for:
 
 *Note: Past performance does not guarantee future results*
 
-## 🛡️ Risk Management
+## 🛡️ RISK MANAGEMENT
 
-### ⚠️ Important Considerations
+### ⚠️ IMPORTANT CONSIDERATIINS
 - Always use proper position sizing
 - Set stop-losses based on SuperTrend levels
 - Consider market volatility when adjusting parameters
 - Backtest thoroughly before live trading
 
-### 📋 Best Practices
+### 📋 BEST PRACTICES
 - Combine with other technical analysis tools
 - Monitor multiple timeframes
 - Use volume confirmation for entries
 - Respect major support/resistance levels
 
-## 🔧 Troubleshooting
+## 🔧 TROUBLESHOOING
 
-### ❓ Common Issues
+### ❓ COMMON ISSUES
 
 **Q: Multi-asset table not showing?**
 ```
@@ -364,27 +364,27 @@ A: Adjust "Retracement Sensitivity" parameter
    Modify "Volume TP" threshold
 ```
 
-## 🤝 Contributing
+## 🤝 CONTRIBUTING
 
-### 🛠️ Development
+### 🛠️ DEVELOPMENT
 - Fork the repository
 - Create feature branch
 - Submit pull request with detailed description
 
-### 🐛 Bug Reports
+### 🐛 BUG REPORTS
 - Use GitHub issues template
 - Include screenshot and symbol details
 - Specify TradingView plan type
 
-## 📞 Support & Community
+## 📞 SUPPORT & COMMUNITY
 
-### 🌐 Social Media
+### 🌐 SOCIAL MEDIA
 - [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/quentrade)
 - [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/quentrade)
 - [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/quentrade)
 - [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@quentrade)
 
-### 📧 Contact
+### 📧 CONTACT
 - **Email**: support@quentraalgo.com
 - **Website**: [quentraalgo.com](https://quentraalgo.com)
 - **Documentation**: [docs.quentrade.com](https://docs.quentraalgo.com)
@@ -415,7 +415,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-## ⚡ Quick Start
+## ⚡ QUICK START
 
 ```bash
 # 1. Copy the Pine Script code
