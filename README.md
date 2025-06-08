@@ -10,19 +10,19 @@
 
 ## 🚀 FEATURES
 
-### 🎯 Core Algorithm
+### 🎯 CORE ALGORITHM
 - **Advanced SuperTrend**: Enhanced SuperTrend calculation with customizable ATR periods and multipliers
 - **Volume Integration**: Volume-weighted trend analysis with visual volume bars
 - **Dynamic S/R Levels**: Automatically drawn support and resistance levels with age management
 - **Multi-Asset Dashboard**: Real-time trend analysis across 5 assets and 5 timeframes
 
-### 📊 Visual Elements
+### 📊 VISUAL ELEMENTS
 - **Gradient Fills**: Dynamic transparency based on price distance from trend lines
 - **Volume Histogram**: Color-coded volume bars with trend correlation
 - **Signal Arrows**: Retracement entry points with customizable sensitivity
 - **Level Management**: Auto-expiring support/resistance with sweep detection
 
-### ⚡ Alert System
+### ⚡ ALERT SYSTEM
 - Trend change notifications
 - Volume threshold alerts
 - Retracement entry signals
