@@ -320,12 +320,6 @@ Use this for:
 ### 🏆 PERFORMANCE METRICS
 ![Backtest Results](Sample/4.jpg)
 
-#### **Sample Results (BTCUSDT 1m)**
-- **Win Rate**: 80%
-- **Profit Factor**: 1.85
-- **Max Drawdown**: 5.5%
-- **Sharpe Ratio**: 1.42
-
 *Note: Past performance does not guarantee future results*
 
 ## 🛡️ RISK MANAGEMENT
